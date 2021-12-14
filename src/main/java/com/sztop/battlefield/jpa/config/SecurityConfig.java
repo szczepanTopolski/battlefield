@@ -63,10 +63,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication()
-                .withDefaultSchema()
+        auth.jdbcAuthentication()// Migrating from h2 - auth.jdbcAuthentication().datasource(datasource)
+                .withDefaultSchema() // Creates table Users and authorities. If removed they need to be created using migrations.
                 .dataSource(dataSource)
-                .withUser("test")
+                .withUser("test") // Test user need to be created using migrations
                 .password("{bcrypt}" + new BCryptPasswordEncoder().encode("test"))
                 .roles("USER");
     }
