@@ -18,4 +18,11 @@ https://www.ehcache.org/schema/ehcache-core-3.0.xsd">
         </expiry>
         <heap unit="entries">500</heap>
     </cache>
+    <cache alias="CityWeather">
+        <expiry>
+            <ttl unit="hours">1</ttl>
+        </expiry>
+        <heap unit="entries">100</heap>
+    </cache>
+
 </config>
